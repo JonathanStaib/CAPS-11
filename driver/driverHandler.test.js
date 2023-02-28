@@ -12,7 +12,7 @@ jest.mock('../eventPool.js', () => {
 
 console.log = jest.fn();
 
-describe(' Handle Eyes', () => {
+describe(' Handle Driver', () => {
   it('logs pickup and emits transit', () => {
     const payload = {id: 'e42fR4', address: '24 note rd'};
     pickup(payload);
