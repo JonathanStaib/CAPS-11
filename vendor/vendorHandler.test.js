@@ -1,16 +1,18 @@
 'use strict';
 
-// const eventPool = require('../eventPool');
+const eventPool = require('../eventPool');
 const handler = require('./handler');
 
-// jest.mock('../eventPool.js', () => {
-//   return{
-//     on: jest.fn(),
-//     emit: jest.fn(),
-//   };
-// });
+jest.mock('../eventPool.js', () => {
+  return{
+    on: jest.fn(),
+    emit: jest.fn(),
+  };
+});
 
-describe(' Handle Eyes', () => {
+console.log = jest.fn();
+
+describe(' Handle Vendor', () => {
   it('logs delivery response from vendor', () => {
     const payload = {id:'sadnyasd87'};
     handler(payload);

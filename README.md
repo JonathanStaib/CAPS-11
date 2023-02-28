@@ -36,7 +36,6 @@ node hub.js to see all events happening in console
     3. logs delivery response
 
 - Describe any tests that you did not complete, skipped, etc
-    all except delivery response. was getting weird console response back. I will ask in code review tomorrow.
 
 #### UML
 
