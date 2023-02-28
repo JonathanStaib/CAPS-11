@@ -1,0 +1,26 @@
+{
+  "name": "caps-11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:watch": "NODE_ENV=test jest --watchAll",
+    "test": "NODE_ENV=test jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanStaib/CAPS-11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanStaib/CAPS-11/issues"
+  },
+  "homepage": "https://github.com/JonathanStaib/CAPS-11#readme",
+  "dependencies": {
+    "chance": "^1.1.10",
+    "eslint": "^8.35.0",
+    "jest": "^29.4.3"
+  }
+}
