@@ -39,4 +39,4 @@ node hub.js to see all events happening in console
 
 #### UML
 
-[UML img](UML.png)
+![UML IMG](./assets/UMl.png)
