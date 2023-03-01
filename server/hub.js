@@ -1,13 +1,21 @@
 'use strict';
 
-let eventPool = require('./eventPool');
+// let eventPool = require('../eventPool');
+require('dotenv').config();
+const { Server } = require('socket.io');
+const PORT = process.env.PORT || 3002;
 
-require('./delivery');
-require('./driver');
+const server = new Server();
 
-const vendorHandler = require('./vendor');
+require('../delivery');
+require('../driver');
 
-eventPool.on('PICKUP', (payload) => {
+const vendorHandler = require('../vendor');
+
+server.on('connection', (socket) => {
+  console.log('Socket connected to Event server!', socket.id);
+
+socket.on('PICKUP', (payload) => {
   console.log('EVENT:', { 
     event: 'pickup',
     date: new Date(),
@@ -15,7 +23,7 @@ eventPool.on('PICKUP', (payload) => {
   });
 });
 
-eventPool.on('IN_TRANSIT', (payload) => {
+socket.on('IN_TRANSIT', (payload) => {
   console.log('EVENT:', { 
     event: 'in-transit',
     date: new Date(),
@@ -23,13 +31,15 @@ eventPool.on('IN_TRANSIT', (payload) => {
   });
 });
 
-eventPool.on('DELIVERED', (payload) => {
+socket.on('DELIVERED', (payload) => {
   console.log('EVENT:', { 
     event: 'delivered',
     date: new Date(),
     payload,
   });
 });
+
+}
 
 eventPool.on('DELIVERED', vendorHandler);
 
