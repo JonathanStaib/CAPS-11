@@ -20,7 +20,7 @@ describe(' Handle Vendor', () => {
       id: '1r2d3a4',
       address: 'store',
     };
-    let myObj = generateOrder(socket, 'jonny');
+    let myObj = generateOrder('jonny');
     expect(console.log).toHaveBeenCalledWith('VENDOR: package ready for pickup');
     expect(socket.emit).toHaveBeenCalledWith('PICKUP', payload);
     expect(myObj.store).toEqual('1-800-flowers');
