@@ -16,6 +16,7 @@ let time = new Date();
 
 const delivered = (payload) => {
   console.log(`DRIVER: delivered ${payload.id} at ${payload.address} on ${time}`);
+  socket.emit('DELIVERED', payload);
 };
 
 // module.exports = { pickup, delivered };
