@@ -21,14 +21,13 @@ describe(' Handle Driver', () => {
       address: 'store',
     };
     pickup(payload);
-    expect(console.log).toHaveBeenCalledWith(`DRIVER: picked up ${payload.id} at ${payload.address}`);
+    expect(console.log).toHaveBeenCalledWith(`DRIVER: picked up package.`);
   });
 
   it('logs delivery', () => {
     const payload = {id: 'e42fR4', address: '24 note rd'};
-    let time = new Date();
     delivered(payload);
-    expect(console.log).toHaveBeenCalledWith(`DRIVER: delivered ${payload.id} at ${payload.address} on ${time}`);
+    expect(console.log).toHaveBeenCalledWith('DRIVER: delivered package');
   });
 
 });

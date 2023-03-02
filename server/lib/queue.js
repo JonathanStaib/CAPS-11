@@ -2,7 +2,11 @@
 
 class Queue {
   constructor(){
-    this.data = {};
+    this.data = {
+      // 'driver': {},
+      // '1-800-flowers': {},
+      // 'acme-widgets': {},
+    };
   }
 
   store(key, value){
