@@ -2,24 +2,18 @@
 
 const Chance = require('chance');
 const chance = new Chance();
+const { io } = require('socket.io-client');
+const socket = io('http://localhost:3001/caps');
 
-const generateOrder = (socket, customer = undefined) => {
-  let payload = {};
-  if( customer === undefined){
-    payload = {
-      store: chance.company(),
-      id: chance.string({ length: 10, alpha: true, numeric: true }),
-      customer: chance.name({ nationality: 'en' }),
-      address: chance.address({ short_suffix: true }),
-    };
-  } else{
-    payload = {
-      store: '1-800-flowers',
-      customer: 'jonny',
-      id: '1r2d3a4',
-      address: 'store',
-    };
-  }
+const generateOrder = (customer = undefined) => {
+
+  let payload = {
+    store: chance.company(),
+    id: chance.string({ length: 10, alpha: true, numeric: true }),
+    customer: chance.name({ nationality: 'en' }),
+    address: chance.address({ short_suffix: true }),
+  };
+
   chance.string();
 
   console.log('VENDOR: package ready for pickup');
@@ -29,6 +23,7 @@ const generateOrder = (socket, customer = undefined) => {
 
 const delivered = (payload) => {
   console.log(`VENDOR: Thank you for delivering to ${payload.customer}`);
+  socket.emit('RECEIVED', payload);
 };
 
 module.exports = { delivered, generateOrder };
