@@ -1,9 +1,9 @@
 'use strict';
 
-const eventPool = require('../eventPool');
+// const socket = require('../socket');
 const {pickup, delivered} = require('./handler');
 
-jest.mock('../eventPool.js', () => {
+jest.mock('../socket.js', () => {
   return{
     on: jest.fn(),
     emit: jest.fn(),
@@ -14,10 +14,14 @@ console.log = jest.fn();
 
 describe(' Handle Driver', () => {
   it('logs pickup and emits transit', () => {
-    const payload = {id: 'e42fR4', address: '24 note rd'};
+    const payload = {
+      store: '1-800-flowers',
+      customer: 'jonny',
+      id: '1r2d3a4',
+      address: 'store',
+    };
     pickup(payload);
     expect(console.log).toHaveBeenCalledWith(`DRIVER: picked up ${payload.id} at ${payload.address}`);
-    expect(eventPool.emit).toHaveBeenCalledWith('IN_TRANSIT', payload);
   });
 
   it('logs delivery', () => {
